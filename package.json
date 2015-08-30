@@ -1,0 +1,21 @@
+{
+  "name": "mdl-webcomponents",
+  "version": "0.0.1",
+  "description": "Vanilla JS web component wrapper for material-design-lite",
+  "main": "mdl-webcomponents.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "material",
+    "design",
+    "lite",
+    "web",
+    "components"
+  ],
+  "author": "Ted Dumitrescu",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "material-design-lite": "^1.0.4"
+  }
+}
