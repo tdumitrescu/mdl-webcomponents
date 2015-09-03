@@ -27,7 +27,7 @@ var MDL_BASE = 'node_modules/material-design-lite/';
 
 gulp.task('default', ['cssjs'], function() {
   return browserify({
-      entries: './src/mdl-webcomponents.js',
+      entries: './src/index.js',
       debug: true
     })
     .transform(babelify)
