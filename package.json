@@ -4,6 +4,7 @@
   "description": "Vanilla JS web component wrapper for material-design-lite",
   "main": "mdl-webcomponents.js",
   "scripts": {
+    "postinstall": "cd node_modules/material-design-lite && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,8 +19,11 @@
   "devDependencies": {
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
+    "event-stream": "^3.3.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
+    "gulp-buffer": "0.0.2",
+    "gulp-concat": "^2.6.0",
     "gulp-css-inline-images": "^0.1.1",
     "gulp-csso": "^1.0.0",
     "gulp-if": "^1.2.5",
