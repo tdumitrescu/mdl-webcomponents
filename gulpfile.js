@@ -14,6 +14,7 @@ var sass = require('gulp-sass');
 var size = require('gulp-size');
 var source = require('vinyl-source-stream');
 var through = require('through2');
+var uglify = require('gulp-uglify');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -42,6 +43,12 @@ gulp.task('default', ['mdl-dist', 'cssjs'], function() {
 
   return eventStream.merge(gulp.src(MDL_BASE + 'dist/material.js'), bundleStream)
     .pipe(concat('mdl-webcomponents.js'))
+    .pipe(gulp.dest('./dist'))
+    .pipe(uglify({
+      sourceRoot: '.',
+      sourceMapIncludeSources: true
+    }))
+    .pipe(rename('mdl-webcomponents.min.js'))
     .pipe(gulp.dest('./dist'))
   ;
 });
