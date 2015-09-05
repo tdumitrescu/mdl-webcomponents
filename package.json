@@ -4,7 +4,7 @@
   "description": "Vanilla JS web component wrapper for material-design-lite",
   "main": "mdl-webcomponents.js",
   "scripts": {
-    "postinstall": "cd node_modules/material-design-lite && npm install",
+    "postinstall": "cd node_modules/material-design-lite && npm install && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

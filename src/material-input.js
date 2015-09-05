@@ -1,5 +1,6 @@
 import {defineComponent} from './register';
 import CSS_TEXTFIELD from './cssjs/textfield.css';
+import CSS_TYPOGRAPHY from './cssjs/typography.css';
 
 export default function() {
   defineComponent('material-input', {
@@ -13,7 +14,7 @@ export default function() {
           errorHTML = error ? '<span class="mdl-textfield__error">' + error + '</span>' : '';
 
       this.createShadowRoot().innerHTML =
-        '<style>' + CSS_TEXTFIELD + '</style>' +
+        '<style>' + CSS_TEXTFIELD + CSS_TYPOGRAPHY + '</style>' +
         '<div class="mdl-textfield mdl-js-textfield' + labelFloat + '">' +
           '<input class="mdl-textfield__input" type="text"'+ patternHTML + '/>' +
           '<label class="mdl-textfield__label" for="sample1">' + label + '</label>' +

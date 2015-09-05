@@ -30,7 +30,7 @@ var AUTOPREFIXER_BROWSERS = [
 var MDL_BASE = 'node_modules/material-design-lite/';
 
 
-gulp.task('default', ['mdl-dist', 'cssjs'], function() {
+gulp.task('default', ['cssjs'], function() {
   var bundleStream = browserify({
       entries: './src/index.js',
       debug: true
@@ -53,12 +53,6 @@ gulp.task('default', ['mdl-dist', 'cssjs'], function() {
   ;
 });
 
-gulp.task('mdl-dist', function(done) {
-  exec('gulp', {cwd: MDL_BASE}, function(err, stdout, stderr) {
-    done(err);
-  });
-});
-
 gulp.task('cssjs', function() {
   return gulp.src([MDL_BASE + 'src/**/_*.scss'])
     .pipe(rename(function(path) {
@@ -76,6 +70,7 @@ gulp.task('cssjs', function() {
       return through.obj(function(file, enc, cb) {
         var contents = file.contents.toString().replace(/'/g, "\\'");
         if (contents) {
+          contents = contents.replace('html,body', 'div');
           var out = "export default '" + contents + "';\n";
           file.contents = new Buffer(out, 'utf8');
           this.push(file);
@@ -86,4 +81,10 @@ gulp.task('cssjs', function() {
     .pipe(gulp.dest('./src/cssjs'))
     .pipe(size({title: 'cssjs'}))
   ;
+});
+
+gulp.task('mdl-dist', function(done) {
+  exec('gulp', {cwd: MDL_BASE}, function(err, stdout, stderr) {
+    done(err);
+  });
 });
