@@ -16,8 +16,8 @@ export default function() {
       this.createShadowRoot().innerHTML =
         '<style>' + CSS_TEXTFIELD + CSS_TYPOGRAPHY + '</style>' +
         '<div class="mdl-textfield mdl-js-textfield' + labelFloat + '">' +
-          '<input class="mdl-textfield__input" type="text"'+ patternHTML + '/>' +
-          '<label class="mdl-textfield__label" for="sample1">' + label + '</label>' +
+          '<input class="mdl-textfield__input" type="text" id="mdl-input1"'+ patternHTML + '/>' +
+          '<label class="mdl-textfield__label" for="mdl-input1">' + label + '</label>' +
           errorHTML +
         '</div>';
     },
