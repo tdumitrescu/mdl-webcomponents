@@ -3,7 +3,18 @@ export function defineComponent(componentName, componentDef) {
     createdCallback: {
       value: function() {
         componentDef.createShadowDOM.call(this);
-        window.componentHandler.upgradeElement(this.shadowRoot.querySelector(componentDef.mdlEl));
+        var shadowRoot = this.shadowRoot,
+            upgradeEl = function(mdlEl) {
+              var el = shadowRoot.querySelector(mdlEl);
+              if (el) {
+                window.componentHandler.upgradeElement(el);
+              }
+            };
+        if (componentDef.mdlEl.forEach) {
+          componentDef.mdlEl.forEach(upgradeEl);
+        } else {
+          upgradeEl(componentDef.mdlEl);
+        }
       }
     }
   });

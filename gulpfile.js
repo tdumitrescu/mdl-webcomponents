@@ -10,6 +10,7 @@ var exec = require('child_process').exec;
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
 var rename = require('gulp-rename');
+var runSequence = require('run-sequence');
 var sass = require('gulp-sass');
 var size = require('gulp-size');
 var source = require('vinyl-source-stream');
@@ -30,7 +31,19 @@ var AUTOPREFIXER_BROWSERS = [
 var MDL_BASE = 'node_modules/material-design-lite/';
 
 
-gulp.task('default', ['cssjs'], function() {
+gulp.task('default', ['bundle']);
+
+gulp.task('all', function(cb) {
+  runSequence(
+    'mdl-dist',
+    'mdl-cssjs',
+    'src-cssjs',
+    'bundle',
+    cb
+  );
+});
+
+gulp.task('bundle', function() {
   var bundleStream = browserify({
       entries: './src/index.js',
       debug: true
@@ -50,7 +63,31 @@ gulp.task('default', ['cssjs'], function() {
   ;
 });
 
-gulp.task('cssjs', function() {
+gulp.task('src-cssjs', function() {
+  return gulp.src(['src/css/**/*.css'])
+    .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
+    .pipe(gulpif('*.css', csso()))
+    .pipe(rename(function(path) {
+      path.dirname = '.';
+      path.extname += '.js';
+    }))
+    .pipe((function() {
+      return through.obj(function(file, enc, cb) {
+        var contents = file.contents.toString().replace(/'/g, "\\'");
+        if (contents) {
+          contents = contents.replace('html,body', 'div');
+          var out = "export default '" + contents + "';\n";
+          file.contents = new Buffer(out, 'utf8');
+          this.push(file);
+        }
+        cb();
+      });
+    })())
+    .pipe(gulp.dest('./src/cssjs'))
+    .pipe(size({title: 'src-cssjs'}))
+});
+
+gulp.task('mdl-cssjs', function() {
   return gulp.src([MDL_BASE + 'src/**/_*.scss'])
     .pipe(rename(function(path) {
       path.basename = path.basename.replace(/^_/, '');
@@ -76,7 +113,7 @@ gulp.task('cssjs', function() {
       });
     })())
     .pipe(gulp.dest('./src/cssjs'))
-    .pipe(size({title: 'cssjs'}))
+    .pipe(size({title: 'mdl-cssjs'}))
   ;
 });
 
