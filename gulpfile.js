@@ -63,8 +63,8 @@ gulp.task('bundle', function() {
   ;
 });
 
-gulp.task('src-cssjs', function() {
-  return gulp.src(['src/css/**/*.css'])
+function compileCSSJS(stream) {
+  return stream
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulpif('*.css', csso()))
     .pipe(rename(function(path) {
@@ -82,36 +82,26 @@ gulp.task('src-cssjs', function() {
         }
         cb();
       });
-    })())
+    })());
+}
+
+gulp.task('src-cssjs', function() {
+  var cssSrc = gulp.src(['src/css/**/*.css']);
+  return compileCSSJS(cssSrc)
     .pipe(gulp.dest('./src/cssjs'))
     .pipe(size({title: 'src-cssjs'}))
+  ;
 });
 
 gulp.task('mdl-cssjs', function() {
-  return gulp.src([MDL_BASE + 'src/**/_*.scss'])
+  var cssSrc = gulp.src([MDL_BASE + 'src/**/_*.scss'])
     .pipe(rename(function(path) {
       path.basename = path.basename.replace(/^_/, '');
     }))
     .pipe(sass({precision: 10, onError: console.error.bind(console, 'Sass error:')}))
     .pipe(cssInlineImages({webRoot: MDL_BASE + 'src'}))
-    .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulpif('*.css', csso()))
-    .pipe(rename(function(path) {
-      path.dirname = '.';
-      path.extname += '.js';
-    }))
-    .pipe((function() {
-      return through.obj(function(file, enc, cb) {
-        var contents = file.contents.toString().replace(/'/g, "\\'");
-        if (contents) {
-          contents = contents.replace('html,body', 'div');
-          var out = "export default '" + contents + "';\n";
-          file.contents = new Buffer(out, 'utf8');
-          this.push(file);
-        }
-        cb();
-      });
-    })())
+  ;
+  return compileCSSJS(cssSrc)
     .pipe(gulp.dest('./src/cssjs'))
     .pipe(size({title: 'mdl-cssjs'}))
   ;
