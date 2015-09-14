@@ -9,7 +9,7 @@ export default function() {
     mdlEl: ['.mdl-textfield', '.mdl-button--icon'],
     createShadowDOM: function() {
       var error = this.getAttribute('error'),
-          errorHTML = error ? '<span class="mdl-textfield__error">' + error + '</span>' : '',
+          errorHTML = error ? `<span class="mdl-textfield__error">${error}</span>` : '',
 
           expandable = this.hasAttribute('expandable'),
           expandableClass = expandable ? ' mdl-textfield--expandable' : '',
@@ -17,24 +17,26 @@ export default function() {
           labelClass = this.hasAttribute('floating-label') ? ' mdl-textfield--floating-label' : '',
           textfieldClasses = expandableClass + labelClass,
 
+          icon = this.getAttribute('icon'),
+          iconHTML = icon ? `<i class="material-icons">${icon}</i>` : '',
+
           maxrows = this.getAttribute('maxrows'),
-          maxrowsHTML = maxrows ? ' maxrows="' + maxrows + '"' : '',
+          maxrowsHTML = maxrows ? ` maxrows="${maxrows}"` : '',
           pattern = this.getAttribute('pattern'),
-          patternHTML = pattern ? ' pattern="' + pattern + '"' : '',
+          patternHTML = pattern ? ` pattern="${pattern}"` : '',
           rows = this.getAttribute('rows'),
-          rowsHTML = rows ? ' rows="' + rows + '"' : '',
+          rowsHTML = rows ? ` rows="${rows}"` : '',
           inputType = rows <= 1 ? 'input' : 'textarea',
           inputAttrs = patternHTML + rowsHTML + maxrowsHTML,
 
           inputHTML =
-            '<' + inputType + ' class="mdl-textfield__input" type="text" id="mdl-input1"'+ inputAttrs + '>' +
-            '</' + inputType + '>' +
-            '<label class="mdl-textfield__label" for="mdl-input1">' + label + '</label>';
+            `<${inputType} class="mdl-textfield__input" type="text" id="mdl-input1"${inputAttrs}></${inputType}>
+            <label class="mdl-textfield__label" for="mdl-input1">${label}</label>`;
 
       if (expandable) {
         inputHTML =
           '<label class="mdl-button mdl-js-button mdl-button--icon" for="mdl-input1">' +
-            '<i class="material-icons">search</i>' +
+            iconHTML +
           '</label>' +
           '<div class="mdl-textfield__expandable-holder">' +
             inputHTML +
@@ -42,8 +44,8 @@ export default function() {
       }
 
       this.createShadowRoot().innerHTML =
-        '<style>' + CSS_BUTTON + CSS_MATERIAL_ICONS + CSS_TEXTFIELD + CSS_TYPOGRAPHY + '</style>' +
-        '<div class="mdl-textfield mdl-js-textfield' + textfieldClasses + '">' +
+        `<style>${CSS_BUTTON}${CSS_MATERIAL_ICONS}${CSS_TEXTFIELD}${CSS_TYPOGRAPHY}</style>` +
+        `<div class="mdl-textfield mdl-js-textfield${textfieldClasses}">` +
           inputHTML +
           errorHTML +
         '</div>';
