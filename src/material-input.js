@@ -30,8 +30,8 @@ export default function() {
           inputAttrs = patternHTML + rowsHTML + maxrowsHTML,
 
           inputHTML =
-            `<${inputType} class="mdl-textfield__input" type="text" id="mdl-input1"${inputAttrs}></${inputType}>
-            <label class="mdl-textfield__label" for="mdl-input1">${label}</label>`;
+            `<${inputType} class="mdl-textfield__input" type="text" id="mdl-input1"${inputAttrs}></${inputType}>` +
+            `<label class="mdl-textfield__label" for="mdl-input1">${label}</label>`;
 
       if (expandable) {
         inputHTML =
