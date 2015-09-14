@@ -14,8 +14,8 @@ export default function() {
         className += " mdl-js-ripple-effect";
       }
       this.createShadowRoot().innerHTML =
-        '<style>' + CSS_BUTTON + CSS_RIPPLE + '</style>' +
-        '<button class="' + className + '"><content></content></button>';
+        `<style>${CSS_BUTTON}${CSS_RIPPLE}</style>` +
+        `<button class="${className}"><content></content></button>`;
     }
   });
 };
