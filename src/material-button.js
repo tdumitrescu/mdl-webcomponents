@@ -6,7 +6,8 @@ export default function() {
   defineComponent('material-button', {
     mdlEl: 'button',
     createShadowDOM: function() {
-      var className = "mdl-button mdl-js-button mdl-button--accent";
+      var className = "mdl-button mdl-js-button mdl-button--accent",
+          buttonAttrs = this.hasAttribute('disabled') ? ' disabled' : '';
       if (this.hasAttribute('raised')) {
         className += " mdl-button--raised";
       }
@@ -15,7 +16,7 @@ export default function() {
       }
       this.createShadowRoot().innerHTML =
         `<style>${CSS_BUTTON}${CSS_RIPPLE}</style>` +
-        `<button class="${className}"><content></content></button>`;
+        `<button class="${className}"${buttonAttrs}><content></content></button>`;
     }
   });
 };

@@ -20,6 +20,7 @@ export default function() {
           icon = this.getAttribute('icon'),
           iconHTML = icon ? `<i class="material-icons">${icon}</i>` : '',
 
+          disabledHTML = this.hasAttribute('disabled') ? ' disabled' : '',
           maxrows = this.getAttribute('maxrows'),
           maxrowsHTML = maxrows ? ` maxrows="${maxrows}"` : '',
           pattern = this.getAttribute('pattern'),
@@ -27,7 +28,7 @@ export default function() {
           rows = this.getAttribute('rows'),
           rowsHTML = rows ? ` rows="${rows}"` : '',
           inputType = rows <= 1 ? 'input' : 'textarea',
-          inputAttrs = patternHTML + rowsHTML + maxrowsHTML,
+          inputAttrs = patternHTML + rowsHTML + maxrowsHTML + disabledHTML,
 
           inputHTML =
             `<${inputType} class="mdl-textfield__input" type="text" id="mdl-input1"${inputAttrs}></${inputType}>` +
