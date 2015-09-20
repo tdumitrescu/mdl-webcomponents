@@ -1,12 +1,17 @@
 import {defineComponent} from './register';
 import CSS_BUTTON from './cssjs/button.css';
+import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
 import CSS_RIPPLE from './cssjs/ripple.css';
+import CSS_TYPOGRAPHY from './cssjs/typography.css';
 
 export default function() {
   defineComponent('mdl-button', {
     mdlEl: 'button',
     createShadowDOM: function() {
-      var className = "mdl-button mdl-js-button mdl-button--accent",
+      var icon = this.getAttribute('icon'),
+          iconHTML = icon ? `<i class="material-icons">${icon}</i>` : '',
+          iconClass = icon ? 'icon' : 'accent',
+          className = `mdl-button mdl-js-button mdl-button--${iconClass}`,
           buttonAttrs = this.hasAttribute('disabled') ? ' disabled' : '';
       if (this.hasAttribute('raised')) {
         className += " mdl-button--raised";
@@ -15,8 +20,8 @@ export default function() {
         className += " mdl-js-ripple-effect";
       }
       this.createShadowRoot().innerHTML =
-        `<style>${CSS_BUTTON}${CSS_RIPPLE}</style>` +
-        `<button class="${className}"${buttonAttrs}><content></content></button>`;
+        `<style>${CSS_BUTTON}${CSS_MATERIAL_ICONS}${CSS_RIPPLE}${CSS_TYPOGRAPHY}</style>` +
+        `<button class="${className}"${buttonAttrs}>${iconHTML}<content></content></button>`;
     }
   });
 };
