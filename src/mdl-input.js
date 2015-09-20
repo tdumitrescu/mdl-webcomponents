@@ -5,7 +5,7 @@ import CSS_TEXTFIELD from './cssjs/textfield.css';
 import CSS_TYPOGRAPHY from './cssjs/typography.css';
 
 export default function() {
-  defineComponent('material-input', {
+  defineComponent('mdl-input', {
     mdlEl: ['.mdl-textfield', '.mdl-button--icon'],
     createShadowDOM: function() {
       var error = this.getAttribute('error'),

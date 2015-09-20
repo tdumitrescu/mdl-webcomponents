@@ -1,6 +1,6 @@
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
-import registerButton from './material-button';
-import registerInput  from './material-input';
+import registerButton from './mdl-button';
+import registerInput  from './mdl-input';
 
 // pre-load Material Icons font
 let headEl = document.head || document.getElementsByTagName('head')[0] || document.documentElement,
