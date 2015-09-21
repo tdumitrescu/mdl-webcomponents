@@ -1,10 +1,10 @@
 {
   "name": "mdl-webcomponents",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Vanilla JS web component wrapper for material-design-lite",
-  "main": "mdl-webcomponents.js",
+  "main": "dist/mdl-webcomponents.js",
   "scripts": {
-    "postinstall": "cd node_modules/material-design-lite && npm install && gulp",
+    "build-all": "cd node_modules/material-design-lite && npm install && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,6 +16,10 @@
   ],
   "author": "Ted Dumitrescu",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tdumitrescu/mdl-webcomponents.git"
+  },
   "devDependencies": {
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
