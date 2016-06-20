@@ -24,7 +24,7 @@ export default function() {
         '<div id="menu-container">' +
           `<button id="menu-label" class="${buttonClassName}"${buttonAttrs}>${labelHTML}</button>` +
           `<ul class="${menuClass}" for="menu-label">` +
-            `<li class="mdl-menu__item">your mom</li>` +
+            `<li class="mdl-menu__item">hardcoded sample item</li>` +
           '</ul>' +
         '</div>';
     }
