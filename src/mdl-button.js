@@ -1,4 +1,4 @@
-import { MDLComponent } from './register';
+import { MDLComponent } from './component';
 import CSS_BUTTON from './cssjs/button.css';
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
 import CSS_RIPPLE from './cssjs/ripple.css';
