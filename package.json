@@ -4,6 +4,7 @@
   "description": "Vanilla JS web component wrapper for material-design-lite",
   "main": "dist/mdl-webcomponents.js",
   "scripts": {
+    "build": "gulp",
     "build-all": "cd node_modules/material-design-lite && npm install && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,7 +33,7 @@
     "gulp-csso": "^1.0.0",
     "gulp-if": "^1.2.5",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.4",
+    "gulp-sass": "^2.3.2",
     "gulp-size": "^2.0.0",
     "gulp-uglify": "^1.4.0",
     "material-design-lite": "^1.0.4",
