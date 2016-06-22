@@ -1,13 +1,16 @@
-import {defineComponent} from './register';
+import { MDLComponent } from './register';
 import CSS_BUTTON from './cssjs/button.css';
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
 import CSS_RIPPLE from './cssjs/ripple.css';
 import CSS_TYPOGRAPHY from './cssjs/typography.css';
 
 export default function() {
-  defineComponent('mdl-button', {
-    mdlEl: 'button',
-    createDOM: function() {
+  document.registerElement('mdl-button', class extends MDLComponent {
+    get MDL_SELECTORS() {
+      return ['button'];
+    }
+
+    createDOM() {
       var icon = this.getAttribute('icon'),
           iconHTML = icon ? `<i class="material-icons">${icon}</i>` : '',
           iconClass = icon ? 'icon' : 'accent',
@@ -24,4 +27,4 @@ export default function() {
         `<button class="${className}"${buttonAttrs}>${iconHTML}<content></content></button>`;
     }
   });
-};
+}
