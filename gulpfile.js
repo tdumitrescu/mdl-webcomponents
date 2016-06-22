@@ -56,10 +56,10 @@ gulp.task('bundle', function() {
 
   return eventStream.merge(gulp.src(MDL_BASE + 'dist/material.js'), bundleStream)
     .pipe(concat('mdl-webcomponents.js'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./build-dev'))
     .pipe(uglify({sourceMap: false}))
     .pipe(rename('mdl-webcomponents.min.js'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest('./build-dev'))
   ;
 });
 
