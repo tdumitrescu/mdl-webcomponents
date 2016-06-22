@@ -7,7 +7,7 @@ import CSS_TYPOGRAPHY from './cssjs/typography.css';
 export default function() {
   defineComponent('mdl-input', {
     mdlEl: ['.mdl-textfield', '.mdl-button--icon'],
-    createShadowDOM: function() {
+    createDOM: function() {
       var error = this.getAttribute('error'),
           errorHTML = error ? `<span class="mdl-textfield__error">${error}</span>` : '',
 

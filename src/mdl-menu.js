@@ -8,7 +8,7 @@ import CSS_TYPOGRAPHY from './cssjs/typography.css';
 export default function() {
   defineComponent('mdl-menu', {
     mdlEl: ['.mdl-menu', '.mdl-menu__item', '.mdl-button'],
-    createShadowDOM: function() {
+    createDOM: function() {
       var icon = this.getAttribute('label-icon'),
           label = this.getAttribute('label'),
           labelClass = icon ? 'icon' : 'accent',

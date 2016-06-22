@@ -7,7 +7,7 @@ import CSS_TYPOGRAPHY from './cssjs/typography.css';
 export default function() {
   defineComponent('mdl-button', {
     mdlEl: 'button',
-    createShadowDOM: function() {
+    createDOM: function() {
       var icon = this.getAttribute('icon'),
           iconHTML = icon ? `<i class="material-icons">${icon}</i>` : '',
           iconClass = icon ? 'icon' : 'accent',
