@@ -36,7 +36,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-size": "^2.0.0",
     "gulp-uglify": "^1.4.0",
-    "material-design-lite": "^1.0.4",
+    "material-design-lite": "tdumitrescu/material-design-lite#mdl-webcomponents",
     "run-sequence": "^1.1.2",
     "through2": "^2.0.0",
     "vinyl-source-stream": "^1.1.0"
