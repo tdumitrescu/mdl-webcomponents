@@ -5,9 +5,12 @@ import CSS_TEXTFIELD from './cssjs/textfield.css';
 import CSS_TYPOGRAPHY from './cssjs/typography.css';
 
 export default function() {
-  defineComponent('mdl-input', {
-    mdlEl: ['.mdl-textfield', '.mdl-button--icon'],
-    createDOM: function() {
+  document.registerElement('mdl-input', class extends MDLComponent {
+    get MDL_SELECTORS() {
+      return ['.mdl-textfield', '.mdl-button--icon'];
+    }
+
+    createDOM() {
       var error = this.getAttribute('error'),
           errorHTML = error ? `<span class="mdl-textfield__error">${error}</span>` : '',
 
@@ -50,13 +53,10 @@ export default function() {
           inputHTML +
           errorHTML +
         '</div>';
-    },
-    proto: {
-      value: {
-        get: function() {
-          return this.shadowRoot.querySelector('.mdl-textfield__input').value;
-        }
-      }
+    }
+
+    get value() {
+      return this.shadowRoot.querySelector('.mdl-textfield__input').value;
     }
   });
 };
