@@ -2,17 +2,15 @@ export class MDLComponent extends HTMLElement {
   createdCallback() {
     this.createDOM();
     this.rootEl = this.shadowRoot || this;
-    this.MDL_SELECTORS.forEach(selector => this.upgradeEl(selector));
+    this.MDL_SELECTORS.forEach(selector => this.upgradeEls(selector));
   }
 
   createDOM() {
   }
 
-  upgradeEl(selector) {
-    const el = this.rootEl.querySelector(selector);
-    if (el) {
-      window.componentHandler.upgradeElement(el);
-    }
+  upgradeEls(selector) {
+    const els = this.rootEl.querySelectorAll(selector);
+    els.forEach(el => window.componentHandler.upgradeElement(el));
   }
 
   // selectors of elements to call upgradeElement() on for mdl
