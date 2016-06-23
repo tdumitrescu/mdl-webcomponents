@@ -27,7 +27,11 @@ export class MDLMenu extends MDLComponent {
     for (let i = 0; i < this.children.length; i++) {
       let child = this.children[i];
       const liAttrs = child.hasAttribute('disabled') ? 'disabled' : '';
-      itemsHTML += `<li ${liAttrs} class="mdl-menu__item">${child.innerHTML}</li>`;
+      const classes = ['mdl-menu__item'];
+      if (child.hasAttribute('divider')) {
+        classes.push('mdl-menu__item--full-bleed-divider');
+      }
+      itemsHTML += `<li ${liAttrs} class="${classes.join(' ')}">${child.innerHTML}</li>`;
     }
 
     this.createShadowRoot().innerHTML = `
