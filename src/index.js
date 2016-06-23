@@ -13,4 +13,4 @@ styleEl.textContent = CSS_MATERIAL_ICONS;
 // register components
 registerButton();
 registerInput();
-// registerMenu();
+registerMenu();
