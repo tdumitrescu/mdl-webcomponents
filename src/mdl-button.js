@@ -1,3 +1,5 @@
+import { h } from 'panel';
+
 import { MDLComponent } from './component';
 import CSS_BUTTON from './cssjs/button.css';
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
@@ -9,21 +11,41 @@ export class MDLButton extends MDLComponent {
     return ['button'];
   }
 
-  createDOM() {
-    var icon = this.getAttribute('icon'),
-        iconHTML = icon ? `<i class="material-icons">${icon}</i>` : '',
-        iconClass = icon ? 'icon' : 'accent',
-        className = `mdl-button mdl-js-button mdl-button--${iconClass}`,
-        buttonAttrs = this.hasAttribute('disabled') ? ' disabled' : '';
-    if (this.hasAttribute('raised')) {
-      className += " mdl-button--raised";
-    }
-    if (!this.hasAttribute('noink')) {
-      className += " mdl-js-ripple-effect";
-    }
-    this.createShadowRoot().innerHTML =
-      `<style>${CSS_BUTTON}${CSS_MATERIAL_ICONS}${CSS_RIPPLE}${CSS_TYPOGRAPHY}</style>` +
-      `<button class="${className}"${buttonAttrs}>${iconHTML}<content></content></button>`;
+  get config() {
+    return {
+
+      css: [
+        CSS_BUTTON,
+        CSS_MATERIAL_ICONS,
+        CSS_RIPPLE,
+        CSS_TYPOGRAPHY,
+      ].join(''),
+
+      template: () => h('button', {
+        className: this.calcClassName(),
+        disabled: this.isAttributeEnabled('disabled'),
+      }, [
+        this.iconNode(),
+        h('content'),
+      ]),
+
+      useShadowDom: true,
+    };
+  }
+
+  calcClassName() {
+    return [
+      'mdl-button',
+      'mdl-js-button',
+      `mdl-button--${!!this.getAttribute('icon') ? 'icon' : 'accent'}`,
+      this.isAttributeEnabled('raised') ? 'mdl-button--raised' : false,
+      !this.isAttributeEnabled('noink') ? 'mdl-js-ripple-effect' : false,
+    ].filter(Boolean).join(' ');
+  }
+
+  iconNode() {
+    const icon = this.getAttribute('icon');
+    return icon ? h('i.material-icons', icon) : '';
   }
 }
 

@@ -1,15 +1,15 @@
-export class MDLComponent extends HTMLElement {
-  createdCallback() {
-    this.createDOM();
-    this.rootEl = this.shadowRoot || this;
-    this.MDL_SELECTORS.forEach(selector => this.upgradeEls(selector));
-  }
+import { Component } from 'panel';
 
-  createDOM() {
+export class MDLComponent extends Component {
+  attachedCallback() {
+    super.attachedCallback(...arguments);
+    window.requestAnimationFrame(() =>
+      this.MDL_SELECTORS.forEach(selector => this.upgradeEls(selector))
+    );
   }
 
   upgradeEls(selector) {
-    const els = this.rootEl.querySelectorAll(selector);
+    const els = this.el.querySelectorAll(selector);
     els.forEach(el => window.componentHandler.upgradeElement(el));
   }
 
