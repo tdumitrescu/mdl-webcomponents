@@ -1,7 +1,7 @@
 {
   "name": "mdl-webcomponents",
   "version": "0.1.0",
-  "description": "Vanilla JS web component wrapper for material-design-lite",
+  "description": "Standalone web components wrapper for material-design-lite",
   "main": "dist/mdl-webcomponents.js",
   "scripts": {
     "build": "gulp",
@@ -15,8 +15,8 @@
     "web",
     "components"
   ],
-  "author": "Ted Dumitrescu",
-  "license": "Apache-2.0",
+  "author": "Ted Dumitrescu <webdev@cmme.org>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/tdumitrescu/mdl-webcomponents.git"
