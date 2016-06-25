@@ -23,11 +23,7 @@ export class MDLInput extends MDLComponent {
 
       template: () => h('div', {
         className: this.calcClassName(),
-        disabled: this.isAttributeEnabled('disabled'),
-      }, [
-        this.inputNode(),
-        this.errorNode(),
-      ]),
+      }, this.inputNodes()),
 
       useShadowDom: true,
     };
@@ -42,8 +38,27 @@ export class MDLInput extends MDLComponent {
     ];
   }
 
-  inputNode() {
-    return '';
+  inputNodes() {
+    const attributes = {};
+    for (const attr of ['maxrows', 'pattern', 'rows']) {
+      if (this.hasAttribute(attr)) {
+        attributes[attr] = this.getAttribute(attr);
+      }
+    }
+
+    let nodes = [
+      h(this.getAttribute('rows') <= 1 ? 'input' : 'textarea', {
+        attributes,
+        className: 'mdl-textfield__input',
+        disabled: this.isAttributeEnabled('disabled'),
+        id: 'mdl-input1',
+        type: 'text',
+      }),
+      h('label.mdl-textfield__label', {
+        htmlFor: 'mdl-input1',
+      }, this.getAttribute('label') || 'Text...'),
+    ];
+    return nodes;
   }
 
   errorNode() {
