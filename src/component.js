@@ -8,6 +8,14 @@ export class MDLComponent extends Component {
     );
   }
 
+  calcClassName() {
+    return this.classList().filter(Boolean).join(' ');
+  }
+
+  classList() {
+    return [];
+  }
+
   upgradeEls(selector) {
     const els = this.el.querySelectorAll(selector);
     els.forEach(el => window.componentHandler.upgradeElement(el));

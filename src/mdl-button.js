@@ -33,14 +33,14 @@ export class MDLButton extends MDLComponent {
     };
   }
 
-  calcClassName() {
+  classList() {
     return [
       'mdl-button',
       'mdl-js-button',
       `mdl-button--${!!this.getAttribute('icon') ? 'icon' : 'accent'}`,
       this.isAttributeEnabled('raised') ? 'mdl-button--raised' : false,
       !this.isAttributeEnabled('noink') ? 'mdl-js-ripple-effect' : false,
-    ].filter(Boolean).join(' ');
+    ];
   }
 
   iconNode() {
