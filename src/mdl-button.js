@@ -39,7 +39,7 @@ export class MDLButton extends MDLComponent {
       'mdl-js-button',
       `mdl-button--${!!this.getAttribute('icon') ? 'icon' : 'accent'}`,
       this.isAttributeEnabled('raised') ? 'mdl-button--raised' : false,
-      !this.isAttributeEnabled('noink') ? 'mdl-js-ripple-effect' : false,
+      this.rippleClass(),
     ];
   }
 }

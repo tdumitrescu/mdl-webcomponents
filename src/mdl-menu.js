@@ -1,3 +1,5 @@
+import { h } from 'panel';
+
 import { MDLComponent } from './component';
 import CSS_BUTTON from './cssjs/button.css';
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
@@ -8,6 +10,56 @@ import CSS_TYPOGRAPHY from './cssjs/typography.css';
 export class MDLMenu extends MDLComponent {
   get MDL_SELECTORS() {
     return ['.mdl-menu', '.mdl-menu__item', '.mdl-button'];
+  }
+
+  get config() {
+    return {
+
+      css: [
+        CSS_BUTTON,
+        CSS_MATERIAL_ICONS,
+        CSS_MENU,
+        CSS_RIPPLE,
+        CSS_TYPOGRAPHY,
+      ].join(''),
+
+      template: () => h('.menu-container', {}, [
+        h('button', {
+          className: this.calcClassName(this.buttonClassList()),
+          disabled: this.isAttributeEnabled('disabled'),
+          id: 'menu-label',
+        }, this.iconNode('label-icon') || this.getAttribute('label')),
+        h('ul', {
+          className: this.calcClassName(this.menuClassList()),
+          htmlFor: 'menu-label',
+        }, this.itemNodes()),
+      ]),
+
+      useShadowDom: true,
+    };
+  }
+
+  buttonClassList() {
+    return [
+      'mdl-button',
+      'mdl-js-button',
+      `mdl-button--${!!this.getAttribute('label-icon') ? 'icon' : 'accent'}`,
+      this.isAttributeEnabled('raised') ? 'mdl-button--raised' : false,
+      this.rippleClass(),
+    ];
+  }
+
+  menuClassList() {
+    return [
+      'mdl-menu',
+      'mdl-menu--bottom-left', // FIXME
+      'mdl-js-menu',
+      this.rippleClass(),
+    ];
+  }
+
+  itemNodes() {
+    return [];
   }
 
   createDOM() {
