@@ -52,7 +52,7 @@ export class MDLMenu extends MDLComponent {
   menuClassList() {
     return [
       'mdl-menu',
-      'mdl-menu--bottom-left', // FIXME
+      `mdl-menu--${this.getAttribute('position') || 'bottom-left'}`,
       'mdl-js-menu',
       this.rippleClass(),
     ];
