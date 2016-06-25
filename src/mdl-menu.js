@@ -30,8 +30,8 @@ export class MDLMenu extends MDLComponent {
           id: 'menu-label',
         }, this.iconNode('label-icon') || this.getAttribute('label')),
         h('ul', {
+          attributes: {for: 'menu-label'},
           className: this.calcClassName(this.menuClassList()),
-          htmlFor: 'menu-label',
         }, this.itemNodes()),
       ]),
 
@@ -59,7 +59,24 @@ export class MDLMenu extends MDLComponent {
   }
 
   itemNodes() {
-    return [];
+    // introspect children to form mdl-menu__item li tags
+    // because MDL hates shadow dom
+    const items = [];
+    for (let i = 0; i < this.children.length; i++) {
+      let child = this.children[i];
+      const attributes = {};
+      if (child.hasAttribute('disabled')) {
+        attributes.disabled = true;
+      }
+      items.push(h('li', {
+        attributes,
+        className: [
+          'mdl-menu__item',
+          child.hasAttribute('divider') ? 'mdl-menu__item--full-bleed-divider' : false,
+        ].filter(Boolean).join(' '),
+      }, child.innerText));
+    }
+    return items;
   }
 
   createDOM() {
