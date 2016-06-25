@@ -1,7 +1,7 @@
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
 import registerButton from './mdl-button';
-import registerInput  from './mdl-input';
 // import registerMenu   from './mdl-menu';
+import registerTextfield  from './mdl-textfield';
 
 // pre-load Material Icons font
 let headEl = document.head || document.getElementsByTagName('head')[0] || document.documentElement,
@@ -12,5 +12,5 @@ styleEl.textContent = CSS_MATERIAL_ICONS;
 
 // register components
 registerButton();
-registerInput();
 // registerMenu();
+registerTextfield();

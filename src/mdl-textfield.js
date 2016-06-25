@@ -6,7 +6,7 @@ import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
 import CSS_TEXTFIELD from './cssjs/textfield.css';
 import CSS_TYPOGRAPHY from './cssjs/typography.css';
 
-export class MDLInput extends MDLComponent {
+export class MDLTextfield extends MDLComponent {
   get MDL_SELECTORS() {
     return ['.mdl-textfield', '.mdl-button--icon'];
   }
@@ -84,5 +84,5 @@ export class MDLInput extends MDLComponent {
 }
 
 export default function() {
-  document.registerElement('mdl-input', MDLInput);
+  document.registerElement('mdl-textfield', MDLTextfield);
 };
