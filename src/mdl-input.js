@@ -58,11 +58,17 @@ export class MDLInput extends MDLComponent {
         htmlFor: 'mdl-input1',
       }, this.getAttribute('label') || 'Text...'),
     ];
+
+    // TODO check for expandable
+
+    nodes.push(this.errorNode());
+
     return nodes;
   }
 
   errorNode() {
-    return '';
+    const err = this.getAttribute('error');
+    return err ? h('span.mdl-textfield__error', err) : '';
   }
 
   createDOM() {
