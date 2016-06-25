@@ -1,3 +1,5 @@
+import { h } from 'panel';
+
 import { MDLComponent } from './component';
 import CSS_BUTTON from './cssjs/button.css';
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
@@ -7,6 +9,45 @@ import CSS_TYPOGRAPHY from './cssjs/typography.css';
 export class MDLInput extends MDLComponent {
   get MDL_SELECTORS() {
     return ['.mdl-textfield', '.mdl-button--icon'];
+  }
+
+  get config() {
+    return {
+
+      css: [
+        CSS_BUTTON,
+        CSS_MATERIAL_ICONS,
+        CSS_TEXTFIELD,
+        CSS_TYPOGRAPHY,
+      ].join(''),
+
+      template: () => h('div', {
+        className: this.calcClassName(),
+        disabled: this.isAttributeEnabled('disabled'),
+      }, [
+        this.inputNode(),
+        this.errorNode(),
+      ]),
+
+      useShadowDom: true,
+    };
+  }
+
+  classList() {
+    return [
+      'mdl-textfield',
+      'mdl-js-textfield',
+      this.hasAttribute('expandable') ? 'mdl-textfield--expandable' : false,
+      this.hasAttribute('floating-label') ? 'mdl-textfield--floating-label' : false,
+    ];
+  }
+
+  inputNode() {
+    return '';
+  }
+
+  errorNode() {
+    return '';
   }
 
   createDOM() {
@@ -55,7 +96,7 @@ export class MDLInput extends MDLComponent {
   }
 
   get value() {
-    return this.shadowRoot.querySelector('.mdl-textfield__input').value;
+    return this.el.querySelector('.mdl-textfield__input').value;
   }
 }
 
