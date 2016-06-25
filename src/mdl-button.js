@@ -42,11 +42,6 @@ export class MDLButton extends MDLComponent {
       !this.isAttributeEnabled('noink') ? 'mdl-js-ripple-effect' : false,
     ];
   }
-
-  iconNode() {
-    const icon = this.getAttribute('icon');
-    return icon ? h('i.material-icons', icon) : '';
-  }
 }
 
 export default function() {

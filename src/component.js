@@ -1,4 +1,4 @@
-import { Component } from 'panel';
+import { Component, h } from 'panel';
 
 export class MDLComponent extends Component {
   attachedCallback() {
@@ -14,6 +14,11 @@ export class MDLComponent extends Component {
 
   classList() {
     return [];
+  }
+
+  iconNode() {
+    const icon = this.getAttribute('icon');
+    return icon ? h('i.material-icons', icon) : '';
   }
 
   upgradeEls(selector) {
