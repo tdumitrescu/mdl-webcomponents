@@ -44,11 +44,16 @@
 
   <hr/>
   <div id="greeting"></div>
+  <div id="menu-selection"></div>
 
   <script>
     document.querySelector('mdl-button').addEventListener('click', function() {
       document.getElementById('greeting').textContent =
         'Yo, ' + document.querySelector('#name-input').value;
+    });
+    document.querySelector('mdl-menu').addEventListener('select', function(ev) {
+      document.getElementById('menu-selection').textContent =
+        'Selected: ' + ev.detail.innerText;
     });
   </script>
 </body>

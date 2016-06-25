@@ -74,6 +74,11 @@ export class MDLMenu extends MDLComponent {
           'mdl-menu__item',
           child.hasAttribute('divider') ? 'mdl-menu__item--full-bleed-divider' : false,
         ].filter(Boolean).join(' '),
+        onclick: ev => {
+          if (!ev.target.hasAttribute('disabled')) {
+            this.dispatchEvent(new CustomEvent('select', {detail: ev.target}));
+          }
+        },
       }, child.innerText));
     }
     return items;
