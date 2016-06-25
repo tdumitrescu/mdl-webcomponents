@@ -46,6 +46,10 @@ export class MDLSwitch extends MDLComponent {
       this.rippleClass(),
     ];
   }
+
+  get checked() {
+    return this.el.querySelector('.mdl-switch__input').checked;
+  }
 }
 
 export default function() {
