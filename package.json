@@ -4,9 +4,10 @@
   "description": "Standalone web components wrapper for material-design-lite",
   "main": "dist/mdl-webcomponents.js",
   "scripts": {
-    "build": "gulp",
+    "build": "webpack",
     "build-all": "cd node_modules/material-design-lite && npm install && gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --progress --colors --watch"
   },
   "keywords": [
     "material",
@@ -22,6 +23,9 @@
     "url": "git://github.com/tdumitrescu/mdl-webcomponents.git"
   },
   "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
     "event-stream": "^3.3.1",
@@ -40,6 +44,8 @@
     "panel": "^0.8.3",
     "run-sequence": "^1.1.2",
     "through2": "^2.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
   }
 }

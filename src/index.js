@@ -1,3 +1,5 @@
+import 'material-design-lite/dist/material';
+
 import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
 import registerButton    from './mdl-button';
 import registerMenu      from './mdl-menu';
