@@ -1,0 +1,4 @@
+mixin icon(iconAttr)
+  - const icon = $component.getAttribute(iconAttr || 'icon');
+  if icon
+    i.material-icons= icon

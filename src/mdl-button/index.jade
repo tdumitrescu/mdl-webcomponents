@@ -1,8 +1,4 @@
-mixin icon(iconAttr)
-  //- TODO icon include/mixin
-  - const icon = $component.getAttribute(iconAttr || 'icon');
-  if icon
-    i.material-icons= icon
+include ../common/icon.jade
 
 button(
   class=['mdl-button', 'mdl-js-button', $helpers.buttonModClass()]
