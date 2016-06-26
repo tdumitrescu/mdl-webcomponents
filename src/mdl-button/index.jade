@@ -1,0 +1,17 @@
+mixin icon(iconAttr)
+  //- TODO icon include/mixin
+  - const icon = $component.getAttribute(iconAttr || 'icon');
+  if icon
+    i.material-icons= icon
+
+button(
+  class=['mdl-button', 'mdl-js-button', $helpers.buttonModClass()]
+  class=$component.rippleClass()
+  class={
+    'mdl-button--colored': $component.isAttributeEnabled('colored'),
+    'mdl-button--raised': $component.isAttributeEnabled('raised'),
+  }
+  disabled=$component.isAttributeEnabled('disabled')
+)
+  +icon()
+  content

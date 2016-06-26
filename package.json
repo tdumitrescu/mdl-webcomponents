@@ -40,11 +40,15 @@
     "gulp-sass": "^2.3.2",
     "gulp-size": "^2.0.0",
     "gulp-uglify": "^1.4.0",
+    "js-beautify": "^1.6.3",
     "material-design-lite": "tdumitrescu/material-design-lite#mdl-webcomponents",
     "panel": "^0.8.3",
     "run-sequence": "^1.1.2",
     "through2": "^2.0.0",
     "vinyl-source-stream": "^1.1.0",
+    "virtual-dom": "^2.1.1",
+    "virtual-jade": "^0.4.0",
+    "virtual-jade-loader": "^0.4.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }
