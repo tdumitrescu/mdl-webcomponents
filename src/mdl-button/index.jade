@@ -1,13 +1,12 @@
 include ../common/icon.jade
 
-button(
-  class=['mdl-button', 'mdl-js-button', $helpers.buttonModClass()]
-  class=$component.rippleClass()
+button.mdl-button.mdl-js-button(
+  class=[$component.rippleClass(), $helpers.buttonModClass()]
   class={
     'mdl-button--colored': $component.isAttributeEnabled('colored'),
     'mdl-button--raised': $component.isAttributeEnabled('raised'),
   }
   disabled=$component.isAttributeEnabled('disabled')
 )
-  +icon()
+  +icon
   content
