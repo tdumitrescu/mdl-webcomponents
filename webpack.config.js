@@ -21,6 +21,10 @@ var webpackConfig = {
           presets: ['es2015'],
         },
       },
+      {
+        test: /\.scss$/,
+        loaders: ['css?minimize', 'sass'],
+      },
     ],
   },
   resolveLoader: {
