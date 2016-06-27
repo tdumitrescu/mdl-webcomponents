@@ -1,6 +1,6 @@
 import 'material-design-lite/dist/material';
 
-import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
+import CSS_MATERIAL_ICONS from './common/material-icons.scss';
 import registerButton    from './mdl-button';
 import registerMenu      from './mdl-menu';
 import registerSwitch    from './mdl-switch';
