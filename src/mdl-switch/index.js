@@ -1,5 +1,3 @@
-import { h } from 'panel';
-
 import { MDLComponent } from '../component';
 import CSS_RIPPLE from 'material-design-lite/src/ripple/_ripple.scss';
 import CSS_SWITCH from 'material-design-lite/src/switch/_switch.scss';

@@ -1,4 +1,4 @@
-import { Component, h } from 'panel';
+import { Component } from 'panel';
 
 export class MDLComponent extends Component {
   attachedCallback() {

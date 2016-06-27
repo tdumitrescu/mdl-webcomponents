@@ -1,5 +1,3 @@
-import { h } from 'panel';
-
 import { MDLComponent } from '../component';
 import CSS_BUTTON from 'material-design-lite/src/button/_button.scss';
 import CSS_MATERIAL_ICONS from '../common/material-icons.scss';
