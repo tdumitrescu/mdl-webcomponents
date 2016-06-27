@@ -1,0 +1,27 @@
+include ../common/icon.jade
+
+mixin input-and-label
+  #{$component.getAttribute('rows') <= 1 ? 'input' : 'textarea'}.mdl-textfield__input(
+    attributes=$helpers.inputAttributes()
+    disabled=$component.isAttributeEnabled('disabled')
+    id='mdl-input1'
+    type='text'
+  )
+  label.mdl-textfield__label(for='mdl-input1')
+    = $component.getAttribute('label') || 'Text...'
+
+.mdl-textfield.mdl-js-textfield(class={
+  'mdl-textfield--expandable': $component.hasAttribute('expandable'),
+  'mdl-textfield--floating-label': $component.hasAttribute('floating-label'),
+})
+  if $component.isAttributeEnabled('expandable')
+    label.mdl-button.mdl-js-button.mdl-button--icon(for='mdl-input1')
+      +icon
+    .mdl-textfield__expandable-holder
+      +input-and-label
+  else
+    +input-and-label
+
+  - const err = $component.getAttribute('error');
+  if err
+    span.mdl-textfield__error= err
