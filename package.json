@@ -23,6 +23,7 @@
     "url": "git://github.com/tdumitrescu/mdl-webcomponents.git"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
@@ -45,6 +46,7 @@
     "material-design-lite": "tdumitrescu/material-design-lite#mdl-webcomponents",
     "node-sass": "^3.8.0",
     "panel": "^0.8.3",
+    "postcss-loader": "^0.9.1",
     "run-sequence": "^1.1.2",
     "sass-loader": "^3.2.2",
     "through2": "^2.0.0",
