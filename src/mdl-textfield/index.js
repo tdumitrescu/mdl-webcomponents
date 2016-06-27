@@ -1,9 +1,6 @@
 import { MDLComponent } from '../component';
-import CSS_BUTTON from 'material-design-lite/src/button/_button.scss';
-import CSS_MATERIAL_ICONS from '../common/material-icons.scss';
-import CSS_TEXTFIELD from 'material-design-lite/src/textfield/_textfield.scss';
-import CSS_TYPOGRAPHY from 'material-design-lite/src/typography/_typography.scss';
 import template from './index.jade';
+import css from './index.scss';
 
 export class MDLTextfield extends MDLComponent {
   get MDL_SELECTORS() {
@@ -12,18 +9,9 @@ export class MDLTextfield extends MDLComponent {
 
   get config() {
     return {
-
-      css: [
-        CSS_BUTTON,
-        CSS_MATERIAL_ICONS,
-        CSS_TEXTFIELD,
-        CSS_TYPOGRAPHY,
-      ].join(''),
-
+      css,
       template,
-
       useShadowDom: true,
-
       helpers: {
         inputAttributes: () => {
           const attributes = {};

@@ -1,9 +1,6 @@
 import { MDLComponent } from '../component';
-import CSS_BUTTON from 'material-design-lite/src/button/_button.scss';
-import CSS_MATERIAL_ICONS from '../common/material-icons.scss';
-import CSS_RIPPLE from 'material-design-lite/src/ripple/_ripple.scss';
-import CSS_TYPOGRAPHY from 'material-design-lite/src/typography/_typography.scss';
 import template from './index.jade';
+import css from './index.scss';
 
 export class MDLButton extends MDLComponent {
   get MDL_SELECTORS() {
@@ -12,18 +9,9 @@ export class MDLButton extends MDLComponent {
 
   get config() {
     return {
-      css: [
-        ':host{display:inline-block;}',
-        CSS_BUTTON,
-        CSS_MATERIAL_ICONS,
-        CSS_RIPPLE,
-        CSS_TYPOGRAPHY,
-      ].join(''),
-
+      css,
       template,
-
       useShadowDom: true,
-
       helpers: {
         buttonModClass: () => {
           let suffix;

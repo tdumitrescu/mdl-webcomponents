@@ -1,7 +1,6 @@
 import { MDLComponent } from '../component';
-import CSS_RIPPLE from 'material-design-lite/src/ripple/_ripple.scss';
-import CSS_SWITCH from 'material-design-lite/src/switch/_switch.scss';
 import template from './index.jade';
+import css from './index.scss';
 
 export class MDLSwitch extends MDLComponent {
   get MDL_SELECTORS() {
@@ -15,14 +14,8 @@ export class MDLSwitch extends MDLComponent {
 
   get config() {
     return {
-
-      css: [
-        CSS_RIPPLE,
-        CSS_SWITCH,
-      ].join(''),
-
+      css,
       template,
-
       useShadowDom: true,
     };
   }
