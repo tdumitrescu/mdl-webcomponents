@@ -1,0 +1,18 @@
+.menu-container
+  mdl-button(
+    attributes=$helpers.buttonAttrs()
+    id='menu-label'
+  )
+    - const label = $component.getAttribute('label')
+    if label
+      = label
+  ul.mdl-menu.mdl-js-menu(
+    attributes={for: 'menu-label'}
+    class=[`mdl-menu--${$helpers.position()}`, $component.rippleClass()]
+  )
+    each item in $helpers.menuItems()
+      li.mdl-menu__item(
+        attributes=$helpers.itemAttrs(item)
+        class={'mdl-menu__item--full-bleed-divider': item.hasAttribute('divider')}
+        onclick=$helpers.clickItem
+      )= item.innerText

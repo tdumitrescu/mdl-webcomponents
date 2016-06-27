@@ -6,6 +6,7 @@ import CSS_MATERIAL_ICONS from '../common/material-icons.scss';
 import CSS_MENU from 'material-design-lite/src/menu/_menu.scss';
 import CSS_RIPPLE from 'material-design-lite/src/ripple/_ripple.scss';
 import CSS_TYPOGRAPHY from 'material-design-lite/src/typography/_typography.scss';
+import template from './index.jade';
 
 export class MDLMenu extends MDLComponent {
   get MDL_SELECTORS() {
@@ -23,65 +24,49 @@ export class MDLMenu extends MDLComponent {
         CSS_TYPOGRAPHY,
       ].join(''),
 
-      template: () => h('.menu-container', {}, [
-        h('button', {
-          className: this.calcClassName(this.buttonClassList()),
-          disabled: this.isAttributeEnabled('disabled'),
-          id: 'menu-label',
-        }, this.iconNode('label-icon') || this.getAttribute('label')),
-        h('ul', {
-          attributes: {for: 'menu-label'},
-          className: this.calcClassName(this.menuClassList()),
-        }, this.itemNodes()),
-      ]),
+      template,
 
       useShadowDom: true,
-    };
-  }
 
-  buttonClassList() {
-    return [
-      'mdl-button',
-      'mdl-js-button',
-      `mdl-button--${!!this.getAttribute('label-icon') ? 'icon' : 'accent'}`,
-      this.isAttributeEnabled('raised') ? 'mdl-button--raised' : false,
-      this.rippleClass(),
-    ];
-  }
+      helpers: {
+        buttonAttrs: () => {
+          const attributes = {};
+          if (this.hasAttribute('disabled')) {
+            attributes.disabled = true;
+          }
+          const icon = this.getAttribute('label-icon');
+          if (icon) {
+            attributes.icon = icon;
+          }
+          return attributes;
+        },
 
-  menuClassList() {
-    return [
-      'mdl-menu',
-      `mdl-menu--${this.getAttribute('position') || 'bottom-left'}`,
-      'mdl-js-menu',
-      this.rippleClass(),
-    ];
-  }
-
-  itemNodes() {
-    // introspect children to form mdl-menu__item li tags
-    // because MDL hates shadow dom
-    const items = [];
-    for (let i = 0; i < this.children.length; i++) {
-      let child = this.children[i];
-      const attributes = {};
-      if (child.hasAttribute('disabled')) {
-        attributes.disabled = true;
-      }
-      items.push(h('li', {
-        attributes,
-        className: [
-          'mdl-menu__item',
-          child.hasAttribute('divider') ? 'mdl-menu__item--full-bleed-divider' : false,
-        ].filter(Boolean).join(' '),
-        onclick: ev => {
+        clickItem: ev => {
           if (!ev.target.hasAttribute('disabled')) {
             this.dispatchEvent(new CustomEvent('select', {detail: ev.target}));
           }
         },
-      }, child.innerText));
-    }
-    return items;
+
+        itemAttrs: item => {
+          const attributes = {};
+          if (item.hasAttribute('disabled')) {
+            attributes.disabled = true;
+          }
+          return attributes;
+        },
+
+        menuItems: () => {
+          // HTMLCollection to Array
+          const items = Array(this.children.length);
+          for (let i = 0; i < this.children.length; i++) {
+            items[i] = this.children[i];
+          }
+          return items;
+        },
+
+        position: () => this.getAttribute('position') || 'bottom-left',
+      },
+    };
   }
 }
 
