@@ -46,6 +46,7 @@
     "material-design-lite": "tdumitrescu/material-design-lite#mdl-webcomponents",
     "node-sass": "^3.8.0",
     "panel": "^0.8.3",
+    "postcss-csso": "^1.1.2",
     "postcss-loader": "^0.9.1",
     "run-sequence": "^1.1.2",
     "sass-loader": "^3.2.2",

@@ -1,4 +1,5 @@
 var autoprefixer = require('autoprefixer');
+var csso = require('postcss-csso');
 var path = require('path');
 
 var AUTOPREFIXER_BROWSERS = [
@@ -36,12 +37,12 @@ var webpackConfig = {
       },
       {
         test: /\.scss$/,
-        loaders: ['css?minimize', 'postcss', 'sass'],
+        loaders: ['css', 'postcss', 'sass'],
       },
     ],
-    postcss: function() {
-      return [autoprefixer(AUTOPREFIXER_BROWSERS)];
-    }
+  },
+  postcss: function() {
+    return [autoprefixer(AUTOPREFIXER_BROWSERS), csso];
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),
