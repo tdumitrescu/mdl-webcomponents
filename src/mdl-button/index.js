@@ -13,6 +13,7 @@ export class MDLButton extends MDLComponent {
   get config() {
     return {
       css: [
+        ':host{display:inline-block;}',
         CSS_BUTTON,
         CSS_MATERIAL_ICONS,
         CSS_RIPPLE,
