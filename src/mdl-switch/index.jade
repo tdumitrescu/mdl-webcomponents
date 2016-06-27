@@ -1,0 +1,13 @@
+label(
+  class=['mdl-switch', 'mdl-js-switch']
+  class=$component.rippleClass()
+  for='mdl-switch1'
+)
+  input.mdl-switch__input(
+    checked=$component.isAttributeEnabled('checked')
+    disabled=$component.isAttributeEnabled('disabled')
+    id='mdl-switch1'
+    type='checkbox'
+  )
+  span.mdl-switch__label
+    content
