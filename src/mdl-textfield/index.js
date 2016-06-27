@@ -1,10 +1,10 @@
 import { h } from 'panel';
 
-import { MDLComponent } from './component';
-import CSS_BUTTON from './cssjs/button.css';
-import CSS_MATERIAL_ICONS from './cssjs/material-icons.css';
-import CSS_TEXTFIELD from './cssjs/textfield.css';
-import CSS_TYPOGRAPHY from './cssjs/typography.css';
+import { MDLComponent } from '../component';
+import CSS_BUTTON from 'material-design-lite/src/button/_button.scss';
+import CSS_MATERIAL_ICONS from '../common/material-icons.scss';
+import CSS_TEXTFIELD from 'material-design-lite/src/textfield/_textfield.scss';
+import CSS_TYPOGRAPHY from 'material-design-lite/src/typography/_typography.scss';
 
 export class MDLTextfield extends MDLComponent {
   get MDL_SELECTORS() {
