@@ -8,19 +8,6 @@ export class MDLComponent extends Component {
     );
   }
 
-  calcClassName(classList=this.classList()) {
-    return classList.filter(Boolean).join(' ');
-  }
-
-  classList() {
-    return [];
-  }
-
-  iconNode(iconAttr='icon') {
-    const icon = this.getAttribute(iconAttr);
-    return icon ? h('i.material-icons', icon) : '';
-  }
-
   rippleClass() {
     return !this.isAttributeEnabled('noink') ? 'mdl-js-ripple-effect' : false;
   }
