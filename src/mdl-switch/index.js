@@ -1,8 +1,8 @@
 import { h } from 'panel';
 
-import { MDLComponent } from './component';
-import CSS_RIPPLE from './cssjs/ripple.css';
-import CSS_SWITCH from './cssjs/switch.css';
+import { MDLComponent } from '../component';
+import CSS_RIPPLE from 'material-design-lite/src/ripple/_ripple.scss';
+import CSS_SWITCH from 'material-design-lite/src/switch/_switch.scss';
 
 export class MDLSwitch extends MDLComponent {
   get MDL_SELECTORS() {
