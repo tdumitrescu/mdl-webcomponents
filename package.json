@@ -41,6 +41,8 @@
     "virtual-dom": "^2.1.1",
     "virtual-jade": "^0.4.2",
     "virtual-jade-loader": "^0.4.0",
+    "web-component-tester": "^4.3.1",
+    "webcomponents.js": "^0.7.22",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }
