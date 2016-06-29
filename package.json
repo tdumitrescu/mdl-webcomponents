@@ -7,7 +7,7 @@
     "build": "npm run build-mdl && webpack",
     "build-mdl": "cd node_modules/material-design-lite && npm install && ./node_modules/.bin/gulp",
     "postinstall": "npm run build-mdl",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "wct --plugin local test/*.html",
     "watch": "webpack --progress --colors --watch"
   },
   "keywords": [
