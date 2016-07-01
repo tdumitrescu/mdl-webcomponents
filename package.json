@@ -8,6 +8,7 @@
     "build-mdl": "cd node_modules/material-design-lite && npm install && ./node_modules/.bin/gulp",
     "postinstall": "npm run build-mdl",
     "test": "wct --plugin local test/*.html",
+    "test-sauce": "wct --plugin sauce test/*.html",
     "watch": "webpack --progress --colors --watch"
   },
   "keywords": [
