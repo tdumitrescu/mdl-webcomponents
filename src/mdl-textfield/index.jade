@@ -4,10 +4,10 @@ mixin input-and-label
   #{$component.getAttribute('rows') <= 1 ? 'input' : 'textarea'}.mdl-textfield__input(
     attributes=$helpers.inputAttributes()
     disabled=$component.isAttributeEnabled('disabled')
-    id='mdl-input1'
+    id=$component.mdlID
     type='text'
   )
-  label.mdl-textfield__label(for='mdl-input1')
+  label.mdl-textfield__label(for=$component.mdlID)
     = $component.getAttribute('label') || 'Text...'
 
 .mdl-textfield.mdl-js-textfield(class={
@@ -15,7 +15,7 @@ mixin input-and-label
   'mdl-textfield--floating-label': $component.hasAttribute('floating-label'),
 })
   if $component.isAttributeEnabled('expandable')
-    label.mdl-button.mdl-js-button.mdl-button--icon(for='mdl-input1')
+    label.mdl-button.mdl-js-button.mdl-button--icon(for=$component.mdlID)
       +icon
     .mdl-textfield__expandable-holder
       +input-and-label

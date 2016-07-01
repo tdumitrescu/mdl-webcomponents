@@ -1,13 +1,13 @@
 .menu-container
   mdl-button(
     attributes=$helpers.buttonAttrs()
-    id='menu-label'
+    id=$component.mdlID
   )
     - const label = $component.getAttribute('label')
     if label
       = label
   ul.mdl-menu.mdl-js-menu(
-    attributes={for: 'menu-label'}
+    attributes={for: $component.mdlID}
     class=[`mdl-menu--${$helpers.position()}`, $component.rippleClass()]
   )
     each item in $helpers.menuItems()

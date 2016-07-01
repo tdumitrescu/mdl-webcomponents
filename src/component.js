@@ -1,5 +1,7 @@
 import { Component } from 'panel';
 
+let componentCount = 1;
+
 export class MDLComponent extends Component {
   attachedCallback() {
     super.attachedCallback(...arguments);
@@ -17,6 +19,11 @@ export class MDLComponent extends Component {
     for (let i = 0; i < els.length; i++) {
       window.componentHandler.upgradeElement(els[i]);
     }
+  }
+
+  // unique identifier
+  get mdlID() {
+    return this._mdlID = (this._mdlID || `mdl-wc-${componentCount++}`);
   }
 
   // selectors of elements to call upgradeElement() on for mdl
