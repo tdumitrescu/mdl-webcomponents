@@ -1,12 +1,17 @@
 describe('mdl-button', function() {
-  var helloDOM = document.getElementById('hello').shadowRoot;
-  var buttonEl = helloDOM.querySelector('.mdl-button');
+  var getMDLEl = function(id) {
+    return document.getElementById(id).shadowRoot.querySelector('.mdl-button');
+  };
 
   it('renders in Shadow DOM', function() {
-    expect(buttonEl.className).to.contain('mdl-js-button');
+    expect(getMDLEl('hello').className).to.contain('mdl-js-button');
   });
 
   it('upgrades its elements', function() {
-    expect(buttonEl.dataset.upgraded).to.contain('MaterialButton');
+    expect(getMDLEl('hello').dataset.upgraded).to.contain('MaterialButton');
+  });
+
+  it('proxies the disabled attribute', function() {
+    expect(getMDLEl('dead-button').disabled).to.be.true;
   });
 });
