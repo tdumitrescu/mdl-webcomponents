@@ -32,7 +32,7 @@
     "browserify": "^11.0.1",
     "css-loader": "^0.23.1",
     "js-beautify": "^1.6.3",
-    "material-design-lite": "tdumitrescu/material-design-lite#c8d8d14",
+    "material-design-lite": "tdumitrescu/material-design-lite#58cf684",
     "node-sass": "^3.8.0",
     "panel": "^0.8.3",
     "postcss-csso": "^1.1.2",
