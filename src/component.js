@@ -14,7 +14,9 @@ export class MDLComponent extends Component {
 
   upgradeEls(selector) {
     const els = this.el.querySelectorAll(selector);
-    els.forEach(el => window.componentHandler.upgradeElement(el));
+    for (let i = 0; i < els.length; i++) {
+      window.componentHandler.upgradeElement(els[i]);
+    }
   }
 
   // selectors of elements to call upgradeElement() on for mdl
