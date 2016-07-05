@@ -5,22 +5,30 @@ mixin mdl-nav(items)
 
 .layout-wrapper
   .mdl-layout.mdl-js-layout(
-    class={'mdl-layout--fixed-header': true}
+    class={
+      'mdl-layout--fixed-drawer': $component.isAttributeEnabled('fixed-drawer'),
+      'mdl-layout--fixed-header': $component.isAttributeEnabled('fixed-header'),
+    }
   )
-    header.mdl-layout__header
-      - const header = $helpers.header();
-      each row, ri in header
-        .mdl-layout__header-row
-          each item in row
-            case item.type
-              when 'content'
-                content(select=item.select)
-              when 'nav'
-                +mdl-nav(item.items)
-              when 'spacer'
-                .mdl-layout-spacer
-              when 'title'
-                span.mdl-layout-title= item.content
+    - const header = $helpers.header();
+    if header
+      header.mdl-layout__header(
+        class={
+          'mdl-layout__header--transparent': $component.isAttributeEnabled('transparent-header'),
+        }
+      )
+        each row, ri in header
+          .mdl-layout__header-row
+            each item in row
+              case item.type
+                when 'content'
+                  content(select=item.select)
+                when 'nav'
+                  +mdl-nav(item.items)
+                when 'spacer'
+                  .mdl-layout-spacer
+                when 'title'
+                  span.mdl-layout-title= item.content
 
     - const drawer = $helpers.drawer();
     if drawer
