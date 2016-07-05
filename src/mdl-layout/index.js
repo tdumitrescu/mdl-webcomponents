@@ -2,6 +2,7 @@ import { MDLComponent } from '../component';
 import template from './index.jade';
 import css from './index.scss';
 
+let layoutInsertID = 1;
 export class MDLLayout extends MDLComponent {
   get MDL_SELECTORS() {
     return ['.mdl-layout'];
@@ -24,9 +25,6 @@ export class MDLLayout extends MDLComponent {
           for (let i = 0; i < headerEl.children.length; i++) {
             const el = headerEl.children[i];
             switch(el.tagName) {
-              case 'MDL-HEADER-CONTENT':
-                items.push({type: 'content', select: el.getAttribute('select')});
-                break;
               case 'MDL-HEADER-SPACER':
                 items.push({type: 'spacer'});
                 break;
@@ -35,6 +33,15 @@ export class MDLLayout extends MDLComponent {
                 break;
               case 'TITLE':
                 items.push({type: 'title', content: el.innerHTML});
+                break;
+              default:
+                // create content insertion point
+                const contentClass = `mdl-wc-layout-insert-${layoutInsertID++}`;
+                const contentEl = document.createElement('div');
+                contentEl.className = contentClass;
+                contentEl.appendChild(el.cloneNode(true));
+                this.appendChild(contentEl);
+                items.push({type: 'content', select: `.${contentClass}`});
                 break;
             }
           }
