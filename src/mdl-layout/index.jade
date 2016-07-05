@@ -1,18 +1,32 @@
+mixin mdl-nav(items)
+  nav.mdl-navigation
+    each item in items
+      a.mdl-navigation__link(href=item.href)= item.content
+
 .layout-wrapper
   .mdl-layout.mdl-js-layout(
     class={'mdl-layout--fixed-header': true}
   )
     header.mdl-layout__header
-      .mdl-layout-icon
-      .mdl-layout__header-row
-        span.mdl-layout-title Hi there
+      - const header = $helpers.header();
+      each row in header
+        .mdl-layout__header-row
+          each item in row
+            case item.type
+              when 'nav'
+                +mdl-nav(item.items)
+              when 'spacer'
+                .mdl-layout-spacer
+              when 'title'
+                span.mdl-layout-title= item.content
+          content(select='header .content')
+
     - const drawer = $helpers.drawer();
     if drawer
       .mdl-layout__drawer
         span.mdl-layout-title= drawer.title
-        nav.mdl-navigation
-          each item in drawer.items
-            a.mdl-navigation__link(href=item.href)= item.content
+        +mdl-nav(drawer.items)
+
     main.mdl-layout__content
       .page-content
         content(select='main')

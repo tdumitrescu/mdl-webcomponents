@@ -13,20 +13,42 @@ export class MDLLayout extends MDLComponent {
       template,
       useShadowDom: true,
       helpers: {
-        drawer: () => {
+        drawer: () => ({
+          title: this.querySelector('mdl-layout-drawer title').innerHTML,
+          items: this.navData(this.querySelector('mdl-layout-drawer nav')),
+        }),
+
+        header: () => {
           const items = [];
-          const hostNav = this.querySelectorAll('mdl-layout-drawer nav a');
-          for (let i = 0; i < hostNav.length; i++) {
-            const item = hostNav[i];
-            items.push({href: item.href, content: item.innerHTML});
+          const headerEl = this.querySelector('header');
+          for (let i = 0; i < headerEl.children.length; i++) {
+            const el = headerEl.children[i];
+            switch(el.tagName) {
+              case 'MDL-HEADER-SPACER':
+                items.push({type: 'spacer'});
+                break;
+              case 'NAV':
+                items.push({type: 'nav', items: this.navData(el)});
+                break;
+              case 'TITLE':
+                items.push({type: 'title', content: el.innerHTML});
+                break;
+            }
           }
-          return {
-            title: this.querySelector('mdl-layout-drawer title').innerHTML,
-            items,
-          };
+          return [items];
         },
       },
     };
+  }
+
+  navData(el) {
+    const items = [];
+    const links = el.querySelectorAll('a');
+    for (let i = 0; i < links.length; i++) {
+      const item = links[i];
+      items.push({href: item.href, content: item.innerHTML});
+    }
+    return items;
   }
 }
 
