@@ -14,6 +14,7 @@ mixin mdl-nav(items)
     if header
       header.mdl-layout__header(
         class={
+          'mdl-layout__header--scroll': !$component.isAttributeEnabled('fixed-header'),
           'mdl-layout__header--transparent': $component.isAttributeEnabled('transparent-header'),
         }
       )
