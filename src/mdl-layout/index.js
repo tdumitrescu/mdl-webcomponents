@@ -24,6 +24,9 @@ export class MDLLayout extends MDLComponent {
           for (let i = 0; i < headerEl.children.length; i++) {
             const el = headerEl.children[i];
             switch(el.tagName) {
+              case 'MDL-HEADER-CONTENT':
+                items.push({type: 'content', select: el.getAttribute('select')});
+                break;
               case 'MDL-HEADER-SPACER':
                 items.push({type: 'spacer'});
                 break;

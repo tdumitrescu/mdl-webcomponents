@@ -9,17 +9,18 @@ mixin mdl-nav(items)
   )
     header.mdl-layout__header
       - const header = $helpers.header();
-      each row in header
+      each row, ri in header
         .mdl-layout__header-row
           each item in row
             case item.type
+              when 'content'
+                content(select=item.select)
               when 'nav'
                 +mdl-nav(item.items)
               when 'spacer'
                 .mdl-layout-spacer
               when 'title'
                 span.mdl-layout-title= item.content
-          content(select='header .content')
 
     - const drawer = $helpers.drawer();
     if drawer
