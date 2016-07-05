@@ -12,6 +12,20 @@ export class MDLLayout extends MDLComponent {
       css,
       template,
       useShadowDom: true,
+      helpers: {
+        drawer: () => {
+          const items = [];
+          const hostNav = this.querySelectorAll('mdl-layout-drawer nav a');
+          for (let i = 0; i < hostNav.length; i++) {
+            const item = hostNav[i];
+            items.push({href: item.href, content: item.innerHTML});
+          }
+          return {
+            title: this.querySelector('mdl-layout-drawer title').innerHTML,
+            items,
+          };
+        },
+      },
     };
   }
 }
