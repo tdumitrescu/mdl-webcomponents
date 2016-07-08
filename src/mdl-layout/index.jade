@@ -16,6 +16,7 @@ mixin mdl-nav(items)
         class={
           'mdl-layout__header--scroll': !$component.isAttributeEnabled('fixed-header'),
           'mdl-layout__header--transparent': $component.isAttributeEnabled('transparent-header'),
+          'mdl-layout__header--waterfall': $component.isAttributeEnabled('waterfall-header'),
         }
       )
         each row, ri in header
