@@ -29,37 +29,49 @@ export class MDLLayout extends MDLComponent {
         header: () => {
           const headerEl = this.querySelector('header');
           if (headerEl) {
-            const items = [];
-            for (let i = 0; i < headerEl.children.length; i++) {
-              const el = headerEl.children[i];
-              switch(el.tagName) {
-                case 'MDL-HEADER-SPACER':
-                  items.push({type: 'spacer'});
-                  break;
-                case 'NAV':
-                  items.push({type: 'nav', items: this.navData(el)});
-                  break;
-                case 'TITLE':
-                  items.push({type: 'title', content: el.innerHTML});
-                  break;
-                default:
-                  // create content insertion point
-                  const contentClass = `mdl-wc-layout-insert-${layoutInsertID++}`;
-                  const contentEl = document.createElement('div');
-                  contentEl.className = contentClass;
-                  contentEl.appendChild(el.cloneNode(true));
-                  this.appendChild(contentEl);
-                  items.push({type: 'content', select: `.${contentClass}`});
-                  break;
-              }
+            const rows = [];
+            let rowEls = this.querySelectorAll('mdl-header-row');
+            if (!rowEls.length) {
+              rowEls = [headerEl];
             }
-            return [items];
+            for (let ri = 0; ri < rowEls.length; ri++) {
+              rows.push(this.headerRowData(rowEls[ri]));
+            }
+            return rows;
           } else {
             return null;
           }
         },
       },
     };
+  }
+
+  headerRowData(rowEl) {
+    const items = [];
+    for (let i = 0; i < rowEl.children.length; i++) {
+      const el = rowEl.children[i];
+      switch(el.tagName) {
+        case 'MDL-HEADER-SPACER':
+          items.push({type: 'spacer'});
+          break;
+        case 'NAV':
+          items.push({type: 'nav', items: this.navData(el)});
+          break;
+        case 'TITLE':
+          items.push({type: 'title', content: el.innerHTML});
+          break;
+        default:
+          // create content insertion point
+          const contentClass = `mdl-wc-layout-insert-${layoutInsertID++}`;
+          const contentEl = document.createElement('div');
+          contentEl.className = contentClass;
+          contentEl.appendChild(el.cloneNode(true));
+          this.appendChild(contentEl);
+          items.push({type: 'content', select: `.${contentClass}`});
+          break;
+      }
+    }
+    return items;
   }
 
   navData(el) {
