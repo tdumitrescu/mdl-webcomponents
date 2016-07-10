@@ -19,7 +19,7 @@ mixin mdl-nav(items)
           'mdl-layout__header--waterfall': $component.isAttributeEnabled('waterfall-header'),
         }
       )
-        each row, ri in header
+        each row in header.rows
           .mdl-layout__header-row
             each item in row
               case item.type
@@ -31,6 +31,13 @@ mixin mdl-nav(items)
                   .mdl-layout-spacer
                 when 'title'
                   span.mdl-layout-title= item.content
+        if header.tabs
+          .mdl-layout__tab-bar.mdl-js-ripple-effect
+            each tab in header.tabs
+              a.mdl-layout__tab(
+                class={'is-active': tab.active}
+                href=tab.target
+              )= tab.text
 
     - const drawer = $helpers.drawer();
     if drawer
@@ -39,5 +46,15 @@ mixin mdl-nav(items)
         +mdl-nav(drawer.items)
 
     main.mdl-layout__content
-      .page-content
-        content(select='main')
+      if header && header.tabs
+        - const sections = $helpers.sections();
+        each section in sections
+          section.mdl-layout__tab-panel(
+            class={'is-active': section.active}
+            id=section.id
+          )
+            .page-content
+              content(select=section.contentSelect)
+      else
+        .page-content
+          content(select='main')

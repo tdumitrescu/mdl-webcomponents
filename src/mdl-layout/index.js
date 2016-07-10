@@ -37,10 +37,40 @@ export class MDLLayout extends MDLComponent {
             for (let ri = 0; ri < rowEls.length; ri++) {
               rows.push(this.headerRowData(rowEls[ri]));
             }
-            return rows;
+
+            const tabBarEl = headerEl.querySelector('mdl-tab-bar');
+            let tabs = null;
+            if (tabBarEl) {
+              tabs = [];
+              let tabEls = tabBarEl.querySelectorAll('mdl-tab');
+              for (let ti = 0; ti < tabEls.length; ti++) {
+                const tabEl = tabEls[ti];
+                tabs.push({
+                  active: tabEl.hasAttribute('active'),
+                  target: `#${tabEl.getAttribute('target')}`,
+                  text: tabEl.textContent, // TODO non-text content
+                });
+              }
+            }
+
+            return {rows, tabs};
           } else {
             return null;
           }
+        },
+
+        sections: () => {
+          const sections = [];
+          const sectionEls = this.querySelectorAll('mdl-layout-section');
+          for (let si = 0; si < sectionEls.length; si++) {
+            const sectionEl = sectionEls[si];
+            sections.push({
+              active: sectionEl.hasAttribute('active'),
+              contentSelect: `[target=${sectionEl.getAttribute('target')}]`,
+              id: sectionEl.getAttribute('target'),
+            });
+          }
+          return sections;
         },
       },
     };

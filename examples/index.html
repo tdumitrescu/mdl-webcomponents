@@ -16,7 +16,8 @@
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-touch-callout: none;
     }
-    main {
+    main, mdl-layout-section {
+      display: block;
       padding: 24px;
     }
     #greeting {
@@ -29,9 +30,15 @@
 <body>
   <mdl-layout fixed-header>
     <header>
-      <title>Fixed menu bar</title>
-      <mdl-header-spacer></mdl-header-spacer>
-      <mdl-textfield expandable floating-label icon="search"></mdl-textfield>
+      <mdl-header-row>
+        <title>Fixed menu bar</title>
+        <mdl-header-spacer></mdl-header-spacer>
+        <mdl-textfield expandable floating-label icon="search"></mdl-textfield>
+      </mdl-header-row>
+      <mdl-tab-bar>
+        <mdl-tab target="section1" active>1st tab</mdl-tab>
+        <mdl-tab target="section2">2nd tab</mdl-tab>
+      </mdl-tab-bar>
     </header>
 
     <mdl-layout-drawer>
@@ -42,7 +49,7 @@
       </nav>
     </mdl-layout-drawer>
 
-    <main>
+    <mdl-layout-section target="section1" active>
       <mdl-menu position="bottom-left" label-icon="more_vert">
         <mdl-menu-item>Some action</mdl-menu-item>
         <mdl-menu-item divider>Another action</mdl-menu-item>
@@ -57,8 +64,9 @@
       <mdl-button fab colored icon="today"></mdl-button>
       <mdl-textfield label="Number..." pattern="-?[0-9]*(\.[0-9]+)?" error="Not a number!"></mdl-textfield>
       <mdl-textfield rows="5" maxrows="7" label="5-7 rows!"></mdl-textfield>
+    </mdl-layout-section>
 
-      <hr/>
+    <mdl-layout-section target="section2">
       <mdl-switch></mdl-switch>
       <hr/>
       <mdl-switch checked>Switch me</mdl-switch>
@@ -67,7 +75,7 @@
       <hr/>
       <div id="greeting"></div>
       <div id="menu-selection"></div>
-    </main>
+    </mdl-layout-section>
   </mdl-layout>
 
   <script>
