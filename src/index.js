@@ -2,6 +2,7 @@ import 'material-design-lite/dist/material';
 
 import CSS_MATERIAL_ICONS from './common/material-icons.scss';
 import registerButton    from './mdl-button';
+import registerGrid      from './mdl-grid';
 import registerLayout    from './mdl-layout';
 import registerMenu      from './mdl-menu';
 import registerSwitch    from './mdl-switch';
@@ -16,6 +17,7 @@ styleEl.textContent = CSS_MATERIAL_ICONS;
 
 // register components
 registerButton();
+registerGrid();
 registerLayout();
 registerMenu();
 registerSwitch();
