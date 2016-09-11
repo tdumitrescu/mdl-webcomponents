@@ -38,6 +38,7 @@
       <mdl-tab-bar>
         <mdl-tab target="section1" active>1st tab</mdl-tab>
         <mdl-tab target="section2">2nd tab</mdl-tab>
+        <mdl-tab target="section-grid">Grid tab</mdl-tab>
       </mdl-tab-bar>
     </header>
 
@@ -75,6 +76,18 @@
       <hr/>
       <div id="greeting"></div>
       <div id="menu-selection"></div>
+    </mdl-layout-section>
+
+    <mdl-layout-section target="section-grid">
+      <mdl-grid>
+        <mdl-cell cols="1">1 Col</mdl-cell>
+        <mdl-cell cols="2">
+          <div>This is 2 cols.</div>
+          <p>Here is a second paragraph.</p>
+        </mdl-cell>
+        <mdl-cell cols="1">1 Col</mdl-cell>
+        <mdl-cell cols="1">1 Col</mdl-cell>
+      </mdl-grid>
     </mdl-layout-section>
   </mdl-layout>
 
