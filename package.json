@@ -40,7 +40,7 @@
     "postcss-loader": "^0.9.1",
     "sass-loader": "^3.2.2",
     "virtual-dom": "^2.1.1",
-    "virtual-jade": "^0.4.2",
+    "virtual-jade": "^0.4.5",
     "virtual-jade-loader": "^0.4.0",
     "web-component-tester": "^4.3.1",
     "webcomponents.js": "^0.7.22",
