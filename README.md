@@ -17,7 +17,7 @@ WIP
 
 # Implementation progress
 
-- [ ] badge
+- [x] badge
 - [x] button
 - [ ] card
 - [ ] checkbox
@@ -25,6 +25,7 @@ WIP
 - [ ] dialog
 - [ ] footer
 - [x] grid
+- [x] icon
 - [ ] icon-toggle
 - [x] layout
 - [ ] list
