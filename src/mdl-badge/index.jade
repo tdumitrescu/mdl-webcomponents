@@ -1,6 +1,10 @@
 - const badge = $component.getAttribute('badge')
 mdl-badge-holder(
-  class={'mdl-badge': !!badge}
+  class={
+    'mdl-badge': !!badge,
+    'mdl-badge--no-background': $component.isAttributeEnabled('no-background'),
+    'mdl-badge--overlap': $component.isAttributeEnabled('overlap'),
+  }
   data-badge=badge
 )
   content
