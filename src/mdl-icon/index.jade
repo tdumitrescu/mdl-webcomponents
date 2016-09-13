@@ -1,1 +1,3 @@
-i.material-icons= $component.getAttribute('icon')
+i.material-icons(
+  style={'font-size': `${$component.getAttribute('size') || '24'}px`}
+)= $component.getAttribute('icon')
