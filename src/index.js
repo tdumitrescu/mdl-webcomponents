@@ -7,6 +7,7 @@ import registerGrid       from './mdl-grid';
 import registerIcon       from './mdl-icon';
 import registerLayout     from './mdl-layout';
 import registerMenu       from './mdl-menu';
+import registerSlider     from './mdl-slider';
 import registerSwitch     from './mdl-switch';
 import registerTextfield  from './mdl-textfield';
 
@@ -24,5 +25,6 @@ registerGrid();
 registerIcon();
 registerLayout();
 registerMenu();
+registerSlider();
 registerSwitch();
 registerTextfield();
