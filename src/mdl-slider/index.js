@@ -14,6 +14,14 @@ export class MDLSlider extends MDLComponent {
       useShadowDom: true,
     };
   }
+
+  get inputEl() {
+    return this.el.querySelector('input.mdl-slider');
+  }
+
+  get value() {
+    return this.inputEl.value;
+  }
 }
 
 export default function() {
