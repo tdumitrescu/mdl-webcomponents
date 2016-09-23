@@ -32,7 +32,7 @@ WIP
 - [x] menu
 - [ ] progress
 - [ ] radio
-- [ ] slider
+- [x] slider
 - [ ] snackbar
 - [ ] spinner
 - [x] switch
