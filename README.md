@@ -21,6 +21,7 @@ WIP
 - [x] button
 - [ ] card
 - [ ] checkbox
+- [ ] chip
 - [ ] data-table
 - [ ] dialog
 - [ ] footer
