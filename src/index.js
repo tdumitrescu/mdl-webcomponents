@@ -11,12 +11,10 @@ import registerSlider     from './mdl-slider';
 import registerSwitch     from './mdl-switch';
 import registerTextfield  from './mdl-textfield';
 
+import { injectGlobalCSS } from './util';
+
 // pre-load Material Icons font
-let headEl = document.head || document.getElementsByTagName('head')[0] || document.documentElement;
-let styleEl = document.createElement('style');
-headEl.appendChild(styleEl);
-styleEl.setAttribute('type', 'text/css');
-styleEl.textContent = CSS_MATERIAL_ICONS;
+injectGlobalCSS(CSS_MATERIAL_ICONS);
 
 // register components
 registerBadge();
