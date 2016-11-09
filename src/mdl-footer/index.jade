@@ -1,0 +1,8 @@
+.mdl-mini-footer
+  for section in $helpers.sections()
+    div(class=`mdl-mini-footer__${section.getAttribute('position')}-section`)
+      for sectionChild in Array.from(section.children)
+        case sectionChild.tagName.toLowerCase()
+          when 'mdl-footer-logo'
+            .mdl-footer-logo= sectionChild.textContent
+            break

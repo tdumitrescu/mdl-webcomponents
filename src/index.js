@@ -3,6 +3,7 @@ import 'material-design-lite/dist/material';
 import CSS_MATERIAL_ICONS from './common/material-icons.scss';
 import registerBadge      from './mdl-badge';
 import registerButton     from './mdl-button';
+import registerFooter     from './mdl-footer';
 import registerGrid       from './mdl-grid';
 import registerIcon       from './mdl-icon';
 import registerLayout     from './mdl-layout';
@@ -19,6 +20,7 @@ injectGlobalCSS(CSS_MATERIAL_ICONS);
 // register components
 registerBadge();
 registerButton();
+registerFooter();
 registerGrid();
 registerIcon();
 registerLayout();

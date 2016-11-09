@@ -18,6 +18,9 @@
     }
     main, mdl-layout-section {
       display: block;
+    }
+    .section-content {
+      display: block;
       padding: 24px;
     }
     #greeting {
@@ -51,22 +54,24 @@
     </mdl-layout-drawer>
 
     <mdl-layout-section target="section1" active>
-      <mdl-menu position="bottom-left" label-icon="more_vert">
-        <mdl-menu-item>Some action</mdl-menu-item>
-        <mdl-menu-item divider>Another action</mdl-menu-item>
-        <mdl-menu-item disabled>Disabled action</mdl-menu-item>
-        <mdl-menu-item>Yet another action</mdl-menu-item>
-      </mdl-menu>
+      <div class="section-content">
+        <mdl-menu position="bottom-left" label-icon="more_vert">
+          <mdl-menu-item>Some action</mdl-menu-item>
+          <mdl-menu-item divider>Another action</mdl-menu-item>
+          <mdl-menu-item disabled>Disabled action</mdl-menu-item>
+          <mdl-menu-item>Yet another action</mdl-menu-item>
+        </mdl-menu>
 
-      <mdl-textfield id="name-input" label="Your name here" floating-label></mdl-textfield>
-      <mdl-button raised>yo</mdl-button>
-      <mdl-button disabled>disabled button</mdl-button>
-      <mdl-button icon="lock"></mdl-button>
-      <mdl-button fab colored icon="today"></mdl-button>
-      <mdl-textfield label="Number..." pattern="-?[0-9]*(\.[0-9]+)?" error="Not a number!"></mdl-textfield>
-      <mdl-textfield rows="5" maxrows="7" label="5-7 rows!"></mdl-textfield>
-      <mdl-slider min="33" max="77" value="40"></mdl-slider>
-      <span id="slider-val"></span>
+        <mdl-textfield id="name-input" label="Your name here" floating-label></mdl-textfield>
+        <mdl-button raised>yo</mdl-button>
+        <mdl-button disabled>disabled button</mdl-button>
+        <mdl-button icon="lock"></mdl-button>
+        <mdl-button fab colored icon="today"></mdl-button>
+        <mdl-textfield label="Number..." pattern="-?[0-9]*(\.[0-9]+)?" error="Not a number!"></mdl-textfield>
+        <mdl-textfield rows="5" maxrows="7" label="5-7 rows!"></mdl-textfield>
+        <mdl-slider min="33" max="77" value="40"></mdl-slider>
+        <span id="slider-val"></span>
+      </div>
 
       <mdl-footer mini>
         <mdl-footer-section position="left">
@@ -80,30 +85,34 @@
     </mdl-layout-section>
 
     <mdl-layout-section target="section2">
-      <mdl-switch></mdl-switch>
-      <hr/>
-      <mdl-switch checked>Switch me</mdl-switch>
-      <mdl-textfield label="Expand!" expandable floating-label icon="settings"></mdl-textfield>
+      <div class="section-content">
+        <mdl-switch></mdl-switch>
+        <hr/>
+        <mdl-switch checked>Switch me</mdl-switch>
+        <mdl-textfield label="Expand!" expandable floating-label icon="settings"></mdl-textfield>
 
-      <mdl-badge badge="♥"><a href="https://google.com">I'm a link!</a></mdl-badge>
-      <mdl-badge badge="5" overlap><mdl-icon icon="account_box" size=36></mdl-icon></mdl-badge>
-      <mdl-badge badge="hi" no-background>Random text</mdl-badge>
+        <mdl-badge badge="♥"><a href="https://google.com">I'm a link!</a></mdl-badge>
+        <mdl-badge badge="5" overlap><mdl-icon icon="account_box" size=36></mdl-icon></mdl-badge>
+        <mdl-badge badge="hi" no-background>Random text</mdl-badge>
 
-      <hr/>
-      <div id="greeting"></div>
-      <div id="menu-selection"></div>
+        <hr/>
+        <div id="greeting"></div>
+        <div id="menu-selection"></div>
+      </div>
     </mdl-layout-section>
 
     <mdl-layout-section target="section-grid">
-      <mdl-grid>
-        <mdl-cell cols="1">1 Col</mdl-cell>
-        <mdl-cell cols="2">
-          <div>This is 2 cols.</div>
-          <p>Here is a second paragraph.</p>
-        </mdl-cell>
-        <mdl-cell cols="1">1 Col</mdl-cell>
-        <mdl-cell cols="1">1 Col</mdl-cell>
-      </mdl-grid>
+      <div class="section-content">
+        <mdl-grid>
+          <mdl-cell cols="1">1 Col</mdl-cell>
+          <mdl-cell cols="2">
+            <div>This is 2 cols.</div>
+            <p>Here is a second paragraph.</p>
+          </mdl-cell>
+          <mdl-cell cols="1">1 Col</mdl-cell>
+          <mdl-cell cols="1">1 Col</mdl-cell>
+        </mdl-grid>
+      </div>
     </mdl-layout-section>
   </mdl-layout>
 
