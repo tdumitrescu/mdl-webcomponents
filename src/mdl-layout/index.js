@@ -2,7 +2,6 @@ import { MDLComponent } from '../component';
 import template from './index.jade';
 import css from './index.scss';
 
-let layoutInsertID = 1;
 export class MDLLayout extends MDLComponent {
   get MDL_SELECTORS() {
     return ['.mdl-layout'];
@@ -91,13 +90,7 @@ export class MDLLayout extends MDLComponent {
           items.push({type: 'title', content: el.innerHTML});
           break;
         default:
-          // create content insertion point
-          const contentClass = `mdl-wc-layout-insert-${layoutInsertID++}`;
-          const contentEl = document.createElement('div');
-          contentEl.className = contentClass;
-          contentEl.appendChild(el.cloneNode(true));
-          this.appendChild(contentEl);
-          items.push({type: 'content', select: `.${contentClass}`});
+          items.push({type: 'content', select: this.insertContent(el)});
           break;
       }
     }
