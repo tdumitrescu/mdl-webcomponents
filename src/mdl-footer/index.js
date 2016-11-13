@@ -10,7 +10,8 @@ export class MDLFooter extends MDLComponent {
       useShadowDom: true,
       helpers: {
         footerType: () => this.isAttributeEnabled('mega') ? 'mega' : 'mini',
-        sections: () => Array.from(this.querySelectorAll('mdl-footer-section')),
+        sections: () => Array.from(this.children)
+          .filter(el => el.tagName.toLowerCase() === 'mdl-footer-section'),
       },
     };
   }

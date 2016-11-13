@@ -1,23 +1,33 @@
-- const footerType = $helpers.footerType();
+- const footerClass = `mdl-${$helpers.footerType()}-footer`;
+
+mixin footer-section(sectionEl)
+  div(class=`${footerClass}__${sectionEl.getAttribute('position')}-section`)
+    for sectionChild in Array.from(sectionEl.children)
+      case sectionChild.tagName.toLowerCase()
+        when 'a'
+          a(href=sectionChild.href)= sectionChild.textContent
+        when 'mdl-footer-dropdown'
+          .mdl-mega-footer__drop-down-section
+            h1.mdl-mega-footer__heading
+              = sectionChild.querySelector('mdl-footer-heading').textContent
+            +link-list(sectionChild.querySelector('mdl-footer-linklist'))
+        when 'mdl-footer-logo'
+          .mdl-logo= sectionChild.textContent
+        when 'mdl-footer-linklist'
+          +link-list(sectionChild)
+        when 'mdl-footer-section'
+          +footer-section(sectionChild)
+        when 'mdl-footer-social-button'
+          button(class=`${footerClass}__social-btn`)
+            content(select=$component.insertContent(sectionChild))
 
 mixin link-list(listEl)
-  ul(class=`mdl-${footerType}-footer__link-list`)
+  ul(class=`${footerClass}__link-list`)
     for linkEl in Array.from(listEl.querySelectorAll('mdl-footer-link'))
       - const anchorEl = linkEl.querySelector('a');
       li
         a(href=anchorEl.href)= anchorEl.textContent
 
-div(class=`mdl-${footerType}-footer`)
+div(class=footerClass)
   for section in $helpers.sections()
-    div(class=`mdl-${footerType}-footer__${section.getAttribute('position')}-section`)
-      for sectionChild in Array.from(section.children)
-        case sectionChild.tagName.toLowerCase()
-          when 'mdl-footer-dropdown'
-            .mdl-mega-footer__drop-down-section
-              h1.mdl-mega-footer__heading
-                = sectionChild.querySelector('mdl-footer-heading').textContent
-              +link-list(sectionChild.querySelector('mdl-footer-linklist'))
-          when 'mdl-footer-logo'
-            .mdl-logo= sectionChild.textContent
-          when 'mdl-footer-linklist'
-            +link-list(sectionChild)
+    +footer-section(section)
