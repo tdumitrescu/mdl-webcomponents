@@ -24,7 +24,7 @@ WIP
 - [ ] chip
 - [ ] data-table
 - [ ] dialog
-- [ ] footer
+- [x] footer
 - [x] grid
 - [x] icon
 - [ ] icon-toggle
