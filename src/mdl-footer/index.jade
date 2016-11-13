@@ -1,8 +1,14 @@
-.mdl-mini-footer
+- const footerType = 'mini';
+div(class=`mdl-${footerType}-footer`)
   for section in $helpers.sections()
     div(class=`mdl-mini-footer__${section.getAttribute('position')}-section`)
       for sectionChild in Array.from(section.children)
         case sectionChild.tagName.toLowerCase()
           when 'mdl-footer-logo'
-            .mdl-footer-logo= sectionChild.textContent
-            break
+            .mdl-logo= sectionChild.textContent
+          when 'mdl-footer-linklist'
+            ul(class=`mdl-${footerType}-footer__link-list`)
+              for listChild in Array.from(sectionChild.querySelectorAll('mdl-footer-link'))
+                - const linkEl = listChild.querySelector('a');
+                li
+                  a(href=linkEl.href)= linkEl.textContent
